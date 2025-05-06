@@ -17,6 +17,18 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.models import User
+from rest_framework import routers, serializers, viewsets
+
+from user_messages.models import MessageThread
+
+
+# Serializers define the API representation.
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MessageThread
+        fields = '__all__'
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
